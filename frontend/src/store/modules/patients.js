@@ -12,7 +12,7 @@ const mutations = {
 }
 const actions = {
     async fetchPatients({commit}){
-        const response  = await axios.get('/Patient?_count=100&_pretty=true')
+        const response  = await axios.get('/Patient?_count=10')
         console.log(response.data['entry'])
 
         commit('setPatients', response.data['entry'])
