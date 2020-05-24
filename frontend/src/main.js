@@ -8,7 +8,8 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import store from './store'
 import axios from 'axios'
-axios.defaults.baseURL = 'https://hapi.fhir.org/baseDstu3'
+// axios.defaults.baseURL = 'https://hapi.fhir.org/baseDstu3'
+axios.defaults.baseURL = 'https://hapi.fhir.org/baseR4'
 // axios.defaults.baseURL = 'http://localhost:8081/baseDstu3/'
 
 Vue.config.productionTip = false;

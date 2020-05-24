@@ -11,7 +11,7 @@
 
         <div class="patients">
             <div v-for="patient in allPatients" class="patient" v-bind:key="patient.id">
-                    {{patient.resource['name'][0]}}
+                    {{patient.resource['name'][0].family}}
             </div>
 
         </div>
