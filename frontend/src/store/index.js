@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-import patients from 'modules/patients'
+import patients from './modules/patients'
 
 Vue.use(Vuex)
 

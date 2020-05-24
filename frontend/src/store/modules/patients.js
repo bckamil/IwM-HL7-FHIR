@@ -1,9 +1,22 @@
-
 import axios from 'axios'
 
-const state = {}
-const getters = {}
-const mutations = {}
-const actions = {}
+const state = {
+    patients: [],
+// {id: 1, name: "Ambrozy"}, {id: 2, name: "Stefan"}
+}
+const getters = {
+    allPatients: state => state.patients
+}
+const mutations = {
+    setPatients: (state, patients) => (state.patients = patients)
+}
+const actions = {
+    async fetchPatients({commit}){
+        const response  = await axios.get('/Patient?_count=100&_pretty=true')
+        console.log(response.data['entry'])
 
-export default { state, getters, mutations, actions }
+        commit('setPatients', response.data['entry'])
+    }
+}
+
+export default {state, getters, mutations, actions}
