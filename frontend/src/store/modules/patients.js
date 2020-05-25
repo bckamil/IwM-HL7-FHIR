@@ -14,7 +14,13 @@ const mutations = {
 }
 const actions = {
     async fetchPatients({commit}){
-        const response  = await axios.get('/Patient?_count=25&_pretty=true')
+
+        let params = {
+            '_pretty' : "true",
+            "_count" : 10
+
+        }
+        const response  = await axios.get('/Patient', {params : params})
         console.log(response.data['entry'])
 
         commit('setPatients', response.data['entry'])
@@ -26,6 +32,18 @@ const actions = {
         console.log(response.data['entry'])
         commit('setPatient', response.data)
 
+    },
+    async searchForPatients({commit}, querry)
+    {
+        let params = {
+            '_pretty' : "true",
+            "_count" : 10,
+            "family" : querry
+
+        }
+        const response  = await axios.get('/Patient', {params:params})
+        console.log(response.data)
+        commit('setPatients', response.data['entry'])
     }
 }
 

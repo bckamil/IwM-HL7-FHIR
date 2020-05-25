@@ -3,8 +3,9 @@
         <h1>Patients list</h1>
         <div class="search_div"><h5>Place to implement searching patients</h5>
 
-            <form type="text">
-                <input type="text" id="fname" name="fname"><br>
+            <form id="search_form" @submit="validate"  >
+                <input type="text" id="ffamily" name="ffamily" v-model="ffamily">
+                <input id="search_button" type="submit" value="Search"></input>
             </form>
         </div>
 
@@ -25,12 +26,26 @@
 
     export default {
         name: 'Patients',
+        el:'#search_form',
+        data: {
+            ffamily: null,
+        },
         methods: {
-            ...mapActions(["fetchPatients"]),
+            ...mapActions(["fetchPatients", "searchForPatients"]),
             showDetails(id) {
                 alert(id)
-                this.$router.push({ name: 'patientDetail', params: { patientId : id } })
-            }
+                this.$router.push({name: 'patientDetail', params: {patientId: id}})
+            },
+            validate: function (form) {
+                if (! /^[\s\t\r\n]*$/.test(this.ffamily)) {
+                    this.searchForPatients(this.ffamily)
+
+                }
+                form.preventDefault()
+
+
+            //    TODO test input function
+            },
         },
         computed: mapGetters(['allPatients']),
         created() {
@@ -48,5 +63,9 @@
 
     .patient_button {
         margin: 1%;
+    }
+
+    #search_button {
+        margin: 2%;
     }
 </style>
