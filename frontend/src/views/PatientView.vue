@@ -1,12 +1,16 @@
 <template>
   <div>
-    TODO
+    <patient-details/>
   </div>
 </template>
 
 <script>
+  import PatientDetails from "../components/PatientDetails";
 export default {
-  name: "Patient"
+  name: "Patient",
+  components:{
+    PatientDetails
+  }
 }
 </script>
 
